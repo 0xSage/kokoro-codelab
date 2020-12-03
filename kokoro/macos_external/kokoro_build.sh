@@ -1,6 +1,8 @@
 #!/bin/bash
 
-# Builds the project.
+# Kokoro build script
+# 1. just calls the project's build.sh
+# 2. recommended to separate build scripts out like this actually
 # Fail on any error.
 set -e
 
@@ -13,9 +15,8 @@ set -e
 #  parameters, will print the full command, with credentials, in the build logs.
 # set -x
 
-if [ "$1" == "release" ]; then
-  javac -g:none Hello.java
-else
-  javac Hello.java
-fi
-java Hello
+# Code under repo is checked out to ${KOKORO_ARTIFACTS_DIR}/github.
+# The final directory name in this path is determined by the scm name specified
+# in the job configuration.
+cd "${KOKORO_ARTIFACTS_DIR}/github/kokoro-codelab-nicolezhu"
+./build.sh
