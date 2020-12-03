@@ -1,3 +1,7 @@
 # Codelab
 
-Walkthrough: https://g3doc.corp.google.com/devtools/kokoro/g3doc/codelab/build_config.md?scm=github&cluster=macos_external&cl=head
+- build config files must be named the same as job configs
+- build configs are within github (sets up envs, build etc)
+- job configs are in g3 (sets up runtime for builds)
+
+- job names are based on job config file paths
